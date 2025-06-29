@@ -3,6 +3,29 @@ package org.example
 // 1. กำหนด data class สำหรับเก็บข้อมูลสินค้า
 data class Product(val name: String, val price: Double, val category: String)
 
+val products = listOf (
+    Product("Laptop",35000.0,"Electronics"),
+    Product("Smartphone",25000.0,"Electronics"),
+    Product("T-shirt", 450.0,"Apparel"),
+    Product("Monitor",7500.0,"Electronics"),
+    Product("Keyboard",499.0,"Electronics"),
+    Product("Jeans",1200.0,"Apparel"),
+    Product("Headphones",1800.0,"Electronics"),
+
+    )
+
+fun calculateTotalElectronicsPriceOver500(products: List<Product>): Double {
+    return products
+        .filter { it.category == "Electronics" && it.price > 500 }
+        .sumOf { it.price }
+}
+
+
+fun countElectronicsOver500(products: List<Product>): Int {
+    return products.count { it.category == "Electronics" && it.price > 500 }
+}
+
+
 fun main() {
     // 2. สร้างรายการสินค้าตัวอย่าง (List<Product>)
     // สินค้า name = "Laptop", price = 35000.0, category = "Electronics"
@@ -95,3 +118,4 @@ fun main() {
     println("   - จะไม่มีการสร้าง Collection กลางทาง ทำให้ประหยัดหน่วยความจำและเร็วกว่ามากสำหรับชุดข้อมูลขนาดใหญ่ เพราะทำงานกับข้อมูลทีละชิ้นและทำทุกขั้นตอนให้เสร็จในรอบเดียว")
     println("   - การคำนวณจะเกิดขึ้นเมื่อมี 'Terminal Operation' มาเรียกใช้เท่านั้น (ในที่นี้คือ .sum())")
 }
+
